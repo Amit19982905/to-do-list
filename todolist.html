@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <style>
+        *{
+            font-family: sans-serif;
+        }
+        header h1 {
+            text-align: center;
+        }
+
+        main {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #list-item {
+            width: 40vw;
+            height: 2vw;
+            padding: 0.5vw;
+            border-radius: 0.5vw;
+        }
+
+        #add {
+            border-radius: 0.5vw;
+            height: 3.4vw;
+            width: 10vw;
+            text-align: center;
+        }
+
+        .box {
+
+            width: 50vw;
+            position: relative;
+        }
+
+        .del {
+            position: absolute;
+            right: 1vw;
+        }
+
+        li {
+            margin-top: 2vw;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Add your To Do List here</h1>
+    </header>
+    <main>
+        <div>
+
+            <input type="text" name="add" id="list-item" placeholder="Enter your task">
+            <button id="add">Add</button>
+        </div>
+        <div class="box">
+            <ul id="list">
+
+            </ul>
+        </div>
+    </main>
+    <script>
+
+
+
+
+        document.getElementById("add").onclick = function () {
+            var entry = document.getElementById("list-item").value;
+            var li = document.createElement("li");
+            var bot = document.createElement("button");
+            var bottxt = document.createTextNode("Delete");
+            var txt = document.createTextNode(entry);
+            li.appendChild(txt);
+            bot.appendChild(bottxt);
+            bot.className = "del";
+            if (entry === '') {
+                alert("You must write something!");
+            } else {
+                document.getElementById("list").appendChild(li);
+            }
+            document.getElementById("list-item").value = "";
+            li.appendChild(bot);
+            var close = document.getElementsByClassName("del");
+        }
+
+        let btn = document.querySelector('ul');
+        btn.addEventListener('click',function(e) {
+            let b = document.getElementById('list');
+            let li = e.target.parentNode;
+            b.removeChild(li);
+        })
+
+       
+
+
+
+    </script>
+</body>
+
+</html>
